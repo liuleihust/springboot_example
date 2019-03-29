@@ -11,7 +11,7 @@ import java.io.IOException;
 
 /**
  * @program: springboot_example
- * @description:
+ * @description:  web 配置
  * @author: liulei
  * @create: 2019-03-13 16:49
  **/
@@ -24,6 +24,13 @@ public class WebConfiguration {
         return new RemoteIpFilter();
     }
 
+    /**
+    * @Description: 配置过滤器
+    * @Param: []
+    * @return: org.springframework.boot.web.servlet.FilterRegistrationBean
+    * @Author: Liulei
+    * @Date: 2019/3/14
+    */
     @Bean
     public FilterRegistrationBean testFilterRegistration(){
         FilterRegistrationBean  registration = new FilterRegistrationBean();
@@ -35,7 +42,13 @@ public class WebConfiguration {
         return registration;
 
     }
-
+    /**
+    * @Description: 创建过滤器
+    * @Param:
+    * @return:
+    * @Author: Liulei
+    * @Date: 2019/3/14
+    */
     public class MyFilter implements Filter {
         @Override
         public void destroy() {

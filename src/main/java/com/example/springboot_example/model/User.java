@@ -34,9 +34,6 @@ public class User implements Serializable {
         this.regTime = regTime;
     }
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
 
     public Long getId() {
         return id;
