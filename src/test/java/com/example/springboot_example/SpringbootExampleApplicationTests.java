@@ -1,5 +1,6 @@
 package com.example.springboot_example;
 
+import com.alibaba.fastjson.JSON;
 import com.example.springboot_example.controller.HelloWorldController;
 import com.example.springboot_example.controller.UserController;
 import com.example.springboot_example.model.User;
@@ -74,9 +75,17 @@ public class SpringbootExampleApplicationTests {
         DateFormat dateFormat=DateFormat.getDateTimeInstance(DateFormat.LONG,DateFormat.LONG);
         String formattedDate = dateFormat.format(date);
         User user = new User("a","aa","aa@qq.com","aaa1",formattedDate);
-        ValueOperations<String,User> operations= redisTemplate.opsForValue();
-        operations.set("1",user);
-        System.out.println(operations.get("1"));
+        System.out.println(user.getId());
+        stringRedisTemplate.opsForValue().set("a", JSON.toJSONString(user));
+        System.out.println(stringRedisTemplate.opsForValue().get("a"));
+        user = JSON.parseObject(stringRedisTemplate.opsForValue().get("a"),User.class);
+        System.out.println(user.getId());
+
+    }
+
+    @Test
+    public void test3(){
+
     }
 
 }
